@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>橫濱 ➔ 東京一日行程與交通指南</title>
+  <style>
+    :root {
+      --bg-color: #f6f7f9;
+      --card-bg: #ffffff;
+      --text-main: #1c1c1e;
+      --text-sub: #6c6c70;
+      --accent: #d97706; /* 銀杏金秋色 */
+      --accent-light: #fef3c7;
+      --border-color: #e5e7eb;
+      --badge-ic: #2563eb;
+      --badge-free: #059669;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #000000;
+        --card-bg: #1c1c1e;
+        --text-main: #f2f2f7;
+        --text-sub: #8e8e93;
+        --border-color: #2c2c2e;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(30px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      line-height: 1.5;
+    }
+
+    header {
+      margin-bottom: 20px;
+      padding: 8px 4px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    /* Quick Links Box */
+    .links-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .metro-link {
+      white-space: nowrap;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--badge-ic);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+    }
+
+    /* Summary Bar */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-label {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .summary-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .timeline-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      transition: opacity 0.2s ease;
+      position: relative;
+    }
+
+    .timeline-card.completed {
+      opacity: 0.55;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .time-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .cost-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--badge-ic);
+    }
+
+    .cost-badge.free {
+      background: rgba(5, 150, 105, 0.1);
+      color: var(--badge-free);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      padding-right: 28px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+
+    .transit-details {
+      background: var(--bg-color);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .transit-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .transit-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .transit-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .checkbox-trigger {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-card.completed .checkbox-trigger {
+      background: var(--badge-free);
+      border-color: var(--badge-free);
+    }
+
+    .timeline-card.completed .checkbox-trigger::after {
+      content: "✓";
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* Key Tips Box */
+    .tips-box {
+      margin-top: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .tips-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .tips-list {
+      font-size: 13px;
+      color: var(--text-sub);
+      padding-left: 18px;
+    }
+
+    .tips-list li {
+      margin-bottom: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <span>🍁</span> 橫濱 ➔ 東京半日遊
+    </div>
+    <div class="header-subtitle">銀杏、表參道、澀谷與六本木雙點燈指南</div>
+  </header>
+
+  <!-- 官方地鐵路線圖連結列 -->
+  <nav class="links-bar">
+    <a class="metro-link" href="https://www.tokyometro.jp/lang_tcn/station/index.html" target="_blank" rel="noopener">🗺️ 東京 Metro 路線圖</a>
+    <a class="metro-link" href="https://www.kotsu.metro.tokyo.jp/ch_h/services/subway/map.html" target="_blank" rel="noopener">🚇 都營地下鐵路線圖</a>
+    <a class="metro-link" href="https://www.tokyu.co.jp/global/english/lane/" target="_blank" rel="noopener">🚃 東急電鐵路線圖</a>
+  </nav>
+
+  <section class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-label">車票策略</div>
+      <div class="summary-val">全程刷 IC 卡</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">預估總車資</div>
+      <div class="summary-val">~1,080 日圓</div>
+    </div>
+  </section>
+
+  <main class="timeline">
+
+    <!-- Card 1 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">13:00 - 14:00</span>
+        <span class="cost-badge">約 420 日圓</span>
+      </div>
+      <div class="card-title">橫濱啤酒工廠 ➔ 東京都心</div>
+      <div class="card-desc">離開 Kirin Brewery，搭車前往明治神宮外苑賞銀杏。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚶</span> 步行 10 分鐘至 京急線「生麥站」</div>
+        <div class="transit-step"><span class="transit-icon">🚃</span> 搭乘 京急本線 至「品川站」（或「橫濱站」轉乘 JR）</div>
+        <div class="transit-step"><span class="transit-icon">🚇</span> 轉乘 JR 山手線至「澀谷站」/ 東京地鐵銀座線至「外苑前站」</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">14:00 - 15:00</span>
+        <span class="cost-badge free">免費 0 日圓</span>
+      </div>
+      <div class="card-title">明治神宮外苑銀杏林</div>
+      <div class="card-desc">漫步金黃銀杏隧道，享受日光與秋季美景拍照。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚶</span> 「外苑前站」4A 出口步行約 5 分鐘抵達銀杏大道</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">15:00 - 16:15</span>
+        <span class="cost-badge free">免費 0 日圓</span>
+      </div>
+      <div class="card-title">表參道散策 ＋ 下午茶</div>
+      <div class="card-desc">走訪精品街與貓街，安排咖啡甜點（如 HARBS / Blue Bottle）。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚶</span> 沿青山通步行 10-15 分鐘接續至表參道與貓街</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">16:15 - 17:30</span>
+        <span class="cost-badge free">免費 0 日圓</span>
+      </div>
+      <div class="card-title">澀谷潮流地標巡禮</div>
+      <div class="card-desc">朝聖澀谷十字路口、宮下公園或 SHIBUYA SKY 周邊。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚶</span> 從貓街直接順行步行約 10 分鐘進入澀谷站商圈</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">17:30 - 17:45</span>
+        <span class="cost-badge">約 180~210 日圓</span>
+      </div>
+      <div class="card-title">前往六本木</div>
+      <div class="card-desc">從澀谷搭地鐵短程前往六本木看點燈。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚇</span> 「澀谷站」搭乘 半藏門線 至「青山一丁目站」轉乘 都營大江戶線 至「六本木站」；或搭乘 日比谷線 直達「六本木站」</div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">17:45 - 19:45</span>
+        <span class="cost-badge free">免費 0 日圓</span>
+      </div>
+      <div class="card-title">六本木雙點燈巡禮 ＋ 輕食</div>
+      <div class="card-desc">賞六本木新城櫸坂通藍白燈海 ＋ 東京中城戶外燈飾。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚶</span> 六本木新城（Roppongi Hills）⇄ 東京中城（Tokyo Midtown）步行約 10 分鐘</div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="timeline-card" onclick="toggleComplete(this)">
+      <div class="checkbox-trigger"></div>
+      <div class="card-header">
+        <span class="time-badge">20:00 - 20:45</span>
+        <span class="cost-badge">約 400~450 日圓</span>
+      </div>
+      <div class="card-title">啟程返回橫濱</div>
+      <div class="card-desc">輕鬆搭車返回橫濱（預計 21:00 前抵達）。</div>
+      <div class="transit-details">
+        <div class="transit-step"><span class="transit-icon">🚇</span> 「六本木站」搭乘 都營大江戶線 至「中目黑站」</div>
+        <div class="transit-step"><span class="transit-icon">🚃</span> 轉乘 東急東橫線（特急/急行）直達「橫濱站」</div>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="tips-box">
+    <div class="tips-title">💡 交通與地鐵資訊劃重點</div>
+    <ul class="tips-list">
+      <li><strong>地鐵路線圖</strong>：點擊上方藍色按鈕可直接開啟 Official Tokyo Metro & 都營地鐵中英文路線圖。</li>
+      <li><strong>免買一日券</strong>：市區地鐵段車資約 360-390 日圓，未達 800 日圓一日券門檻。</li>
+      <li><strong>感應乘車</strong>：直接刷 iPhone Apple Wallet 內的 Suica 或 PASMO，進出站極速方便。</li>
+    </ul>
+  </aside>
+
+  <footer>
+    <p> Yokohama & Tokyo Day Trip Planner</p>
+  </footer>
+
+  <script>
+    function toggleComplete(card) {
+      card.classList.toggle('completed');
+      saveState();
+    }
+
+    function saveState() {
+      const cards = document.querySelectorAll('.timeline-card');
+      const state = Array.from(cards).map(card => card.classList.contains('completed'));
+      localStorage.setItem('tokyo_itinerary_state', JSON.stringify(state));
+    }
+
+    function loadState() {
+      const saved = localStorage.getItem('tokyo_itinerary_state');
+      if (saved) {
+        const state = JSON.parse(saved);
+        const cards = document.querySelectorAll('.timeline-card');
+        cards.forEach((card, idx) => {
+          if (state[idx]) card.classList.add('completed');
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadState);
+  </script>
+</body>
+</html>
