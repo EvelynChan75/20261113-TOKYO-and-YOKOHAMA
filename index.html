@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>橫濱 ➔ 東京一日行程與交通指南</title>
+  <title>東京與橫濱音樂美饌 4 日之旅</title>
   <style>
     :root {
       --bg-color: #f6f7f9;
       --card-bg: #ffffff;
       --text-main: #1c1c1e;
       --text-sub: #6c6c70;
-      --accent: #d97706; /* 銀杏金秋色 */
+      --accent: #d97706; /* 秋季銀杏金 */
       --accent-light: #fef3c7;
       --border-color: #e5e7eb;
       --badge-ic: #2563eb;
@@ -46,7 +46,7 @@
     }
 
     header {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       padding: 8px 4px;
     }
 
@@ -63,6 +63,37 @@
       font-size: 14px;
       color: var(--text-sub);
       margin-top: 4px;
+    }
+
+    /* Day Switcher Tabs */
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .day-btn {
+      flex: 1;
+      min-width: 75px;
+      text-align: center;
+      padding: 8px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .day-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
     }
 
     /* Quick Links Box */
@@ -88,40 +119,41 @@
       box-shadow: var(--shadow);
     }
 
-    /* Summary Bar */
-    .summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
+    /* Day Section */
+    .day-section {
+      display: none;
     }
 
-    .summary-card {
+    .day-section.active {
+      display: block;
+    }
+
+    .day-header-box {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
-      padding: 14px 16px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
       box-shadow: var(--shadow);
     }
 
-    .summary-label {
-      font-size: 12px;
-      color: var(--text-sub);
-      font-weight: 500;
-    }
-
-    .summary-val {
-      font-size: 17px;
+    .day-header-title {
+      font-size: 16px;
       font-weight: 700;
       color: var(--accent);
+    }
+
+    .day-header-sub {
+      font-size: 13px;
+      color: var(--text-sub);
       margin-top: 2px;
     }
 
-    /* Timeline Section */
+    /* Timeline Cards */
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .timeline-card {
@@ -135,7 +167,7 @@
     }
 
     .timeline-card.completed {
-      opacity: 0.55;
+      opacity: 0.5;
     }
 
     .card-header {
@@ -232,7 +264,7 @@
       font-weight: bold;
     }
 
-    /* Key Tips Box */
+    /* Tips Box */
     .tips-box {
       margin-top: 24px;
       background: var(--card-bg);
@@ -270,148 +302,396 @@
 
   <header>
     <div class="header-title">
-      <span>🍁</span> 橫濱 ➔ 東京半日遊
+      <span>🎵</span> 東京與橫濱音樂美饌之旅
     </div>
-    <div class="header-subtitle">銀杏、表參道、澀谷與六本木雙點燈指南</div>
+    <div class="header-subtitle">2026.11.13(五) - 2026.11.16(一) | 4日行程全指南</div>
   </header>
 
-  <!-- 官方地鐵路線圖連結列 -->
+  <!-- 地鐵路線圖捷徑 -->
   <nav class="links-bar">
     <a class="metro-link" href="https://www.tokyometro.jp/lang_tcn/station/index.html" target="_blank" rel="noopener">🗺️ 東京 Metro 路線圖</a>
     <a class="metro-link" href="https://www.kotsu.metro.tokyo.jp/ch_h/services/subway/map.html" target="_blank" rel="noopener">🚇 都營地下鐵路線圖</a>
     <a class="metro-link" href="https://www.tokyu.co.jp/global/english/lane/" target="_blank" rel="noopener">🚃 東急電鐵路線圖</a>
   </nav>
 
-  <section class="summary-grid">
-    <div class="summary-card">
-      <div class="summary-label">車票策略</div>
-      <div class="summary-val">全程刷 IC 卡</div>
+  <!-- Day 切換頁籤 -->
+  <div class="day-tabs">
+    <button class="day-btn" onclick="switchDay(1)">DAY 1</button>
+    <button class="day-btn" onclick="switchDay(2)">DAY 2</button>
+    <button class="day-btn active" onclick="switchDay(3)">DAY 3</button>
+    <button class="day-btn" onclick="switchDay(4)">DAY 4</button>
+  </div>
+
+  <!-- DAY 1 -->
+  <section id="day1" class="day-section">
+    <div class="day-header-box">
+      <div class="day-header-title">DAY 1：抵達東京 ➔ 銀座美食漫遊 ➔ 橫濱 Check-in</div>
+      <div class="day-header-sub">住宿：橫濱三井花園飯店 Minatomirai Premier</div>
     </div>
-    <div class="summary-card">
-      <div class="summary-label">預估總車資</div>
-      <div class="summary-val">~1,080 日圓</div>
+
+    <div class="timeline">
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">12:00 - 13:30</span>
+        </div>
+        <div class="card-title">抵達成田機場 (BR184)</div>
+        <div class="card-desc">入境通關完成，準備前往東京車站。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚌</span> 搭乘 AIRPORT BUS TYO-NRT 直達東京車站</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">13:30 - 15:30</span>
+        </div>
+        <div class="card-title">東京車站寄放行李</div>
+        <div class="card-desc">於丸之內/八重洲出口搜尋寄物櫃；若滿櫃可至 JR 丸之內地下剪票口外黑貓宅急便或 ecbo cloak 人工寄物。</div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">15:30 - 17:00</span>
+        </div>
+        <div class="card-title">銀座散步漫遊</div>
+        <div class="card-desc">16:00 至登龍門壽司抽號碼牌，漫步 Ginza Six、長野/新潟物產館、木村屋。</div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">17:00 - 19:30</span>
+        </div>
+        <div class="card-title">晚餐：登龍門壽司</div>
+        <div class="card-desc">體驗精緻立食握壽司，飯後順遊 Uniqlo 銀座旗艦店。</div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">19:30 - 21:00</span>
+        </div>
+        <div class="card-title">Ginza Lion Beer Hall 小酌</div>
+        <div class="card-desc">位於銀座七丁目，體驗日本現存最古老啤酒館微醺氛圍。</div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">21:00 - 22:30</span>
+        </div>
+        <div class="card-title">移動至橫濱 Check-in</div>
+        <div class="card-desc">返回東京站取行李，搭電車前往橫濱並辦理入住。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 東京站搭乘 JR 東海道線 / 橫須賀線 直達橫濱站/港未來</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <main class="timeline">
-
-    <!-- Card 1 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">13:00 - 14:00</span>
-        <span class="cost-badge">約 420 日圓</span>
-      </div>
-      <div class="card-title">橫濱啤酒工廠 ➔ 東京都心</div>
-      <div class="card-desc">離開 Kirin Brewery，搭車前往明治神宮外苑賞銀杏。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚶</span> 步行 10 分鐘至 京急線「生麥站」</div>
-        <div class="transit-step"><span class="transit-icon">🚃</span> 搭乘 京急本線 至「品川站」（或「橫濱站」轉乘 JR）</div>
-        <div class="transit-step"><span class="transit-icon">🚇</span> 轉乘 JR 山手線至「澀谷站」/ 東京地鐵銀座線至「外苑前站」</div>
-      </div>
+  <!-- DAY 2 -->
+  <section id="day2" class="day-section">
+    <div class="day-header-box">
+      <div class="day-header-title">DAY 2：湘南海岸漫遊（江之島、鎌倉大佛、野毛橫丁）</div>
+      <div class="day-header-sub">古都地標與湘南海岸落日巡禮</div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">14:00 - 15:00</span>
-        <span class="cost-badge free">免費 0 日圓</span>
+    <div class="timeline">
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">10:00 - 10:40</span>
+        </div>
+        <div class="card-title">出發前往藤澤</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 橫濱站搭乘 JR 東海道線 至 JR 藤澤站（約 20 分鐘）</div>
+        </div>
       </div>
-      <div class="card-title">明治神宮外苑銀杏林</div>
-      <div class="card-desc">漫步金黃銀杏隧道，享受日光與秋季美景拍照。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚶</span> 「外苑前站」4A 出口步行約 5 分鐘抵達銀杏大道</div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">10:40 - 14:30</span>
+        </div>
+        <div class="card-title">江之島漫遊 ＋ 午餐</div>
+        <div class="card-desc">享用江之島海鮮吻仔魚丼與天婦羅。搭乘巴士可避開江之電人潮。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚌</span> 轉乘江之電巴士 (F3/F31) 或小田急電鐵直達江之島</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">14:30 - 16:30</span>
+        </div>
+        <div class="card-title">參觀鎌倉大佛 (高德院)</div>
+        <div class="card-desc">經典古都地標，遠眺湘南海岸海景。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚃</span> 搭乘江之電至「長谷站」步行即達</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">16:30 - 18:30</span>
+        </div>
+        <div class="card-title">小町通與鶴岡八幡宮</div>
+        <div class="card-desc">逛小町通商店街采買伴手禮（鴿子餅乾等）與參拜。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚃</span> 搭乘江之電至「鎌倉站」</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">19:00 - 21:30</span>
+        </div>
+        <div class="card-title">晚餐：野毛橫丁居酒屋</div>
+        <div class="card-desc">返回橫濱，體驗昭和復古串燒與居酒屋深夜微醺文化。</div>
       </div>
     </div>
+  </section>
 
-    <!-- Card 3 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">15:00 - 16:15</span>
-        <span class="cost-badge free">免費 0 日圓</span>
-      </div>
-      <div class="card-title">表參道散步 ＋ 下午茶</div>
-      <div class="card-desc">走訪精品街與貓街，安排咖啡甜點（如 HARBS / Blue Bottle）。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚶</span> 沿青山通步行 10-15 分鐘接續至表參道與貓街</div>
-      </div>
+  <!-- DAY 3 -->
+  <section id="day3" class="day-section active">
+    <div class="day-header-box">
+      <div class="day-header-title">DAY 3：Kirin 見學 ➔ 東京半日快閃 ➔ 慶功燒肉</div>
+      <div class="day-header-sub">龍貓東京線 ＆ Zoe & Macoto aiko 橫濱 Arena Live 分頭行程</div>
     </div>
 
-    <!-- Card 4 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">16:15 - 17:30</span>
-        <span class="cost-badge free">免費 0 日圓</span>
+    <div class="timeline">
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">10:15 - 10:45</span>
+          <span class="cost-badge">IC 卡搭乘</span>
+        </div>
+        <div class="card-title">移動前往啤酒工廠</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 橫濱搭乘京急本線至「生麥站」（約 15 分鐘）</div>
+          <div class="transit-step"><span class="transit-icon">🚶</span> 出站步行約 10 分鐘抵達工廠</div>
+        </div>
       </div>
-      <div class="card-title">澀谷潮流地標巡禮</div>
-      <div class="card-desc">朝聖澀谷十字路口、宮下公園或 SHIBUYA SKY 周邊。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚶</span> 從貓街直接順行步行約 10 分鐘進入澀谷站商圈</div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">11:00 - 12:30</span>
+        </div>
+        <div class="card-title">Kirin 啤酒橫濱工廠見學</div>
+        <div class="card-desc">已完成預約。體驗啤酒製造工序與暢飲鮮釀試飲。</div>
+      </div>
+
+      <!-- 龍貓專屬東京快閃路線 -->
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">13:00 - 14:00</span>
+          <span class="cost-badge">約 420 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】出發前往東京都心</div>
+        <div class="card-desc">離開 Kirin 啤酒工廠，準備前往明治神宮外苑。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚶</span> 步行至京急線「生麥站」</div>
+          <div class="transit-step"><span class="transit-icon">🚃</span> 京急本線 至「品川站」/「橫濱站」轉乘地鐵</div>
+          <div class="transit-step"><span class="transit-icon">🚇</span> 東京地鐵銀座線 至「外苑前站」/「青山一丁目站」</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">14:00 - 15:00</span>
+          <span class="cost-badge free">免費 0 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】明治神宮外苑銀杏林</div>
+        <div class="card-desc">漫步金黃銀杏隧道，享受日光與秋季美景拍照。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚶</span> 外苑前站 4A 出口步行 5 分鐘即達銀杏大道</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">15:00 - 16:15</span>
+          <span class="cost-badge free">免費 0 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】表參道散策 ＋ 下午茶</div>
+        <div class="card-desc">走訪精品街與貓街，安排質感咖啡甜點。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚶</span> 沿青山通步行 10-15 分鐘接續至表參道與貓街</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">16:15 - 17:30</span>
+          <span class="cost-badge free">免費 0 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】澀谷潮流地標巡禮</div>
+        <div class="card-desc">朝聖澀谷十字路口、宮下公園或 SHIBUYA SKY 周邊。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚶</span> 從貓街直接順行步行 10 分鐘進入澀谷站商圈</div>
+        </div>
+      </div>
+
+      <!-- Zoe & Macoto 演唱會 -->
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">16:30 - 20:00</span>
+        </div>
+        <div class="card-title">【Zoe & Macoto】aiko Live 演唱會</div>
+        <div class="card-desc">抵達橫濱 Arena 參加 aiko Live。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 橫濱站搭乘 JR / 地下鐵 至「新橫濱站」</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">17:30 - 19:45</span>
+          <span class="cost-badge">約 180~210 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】六本木雙點燈巡禮 ＋ 輕食</div>
+        <div class="card-desc">觀賞六本木新城櫸坂通藍白燈海 ＋ 東京中城戶外聖誕燈飾。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚇</span> 「澀谷站」搭地下鐵半藏門線至青山一丁目轉大江戶線，或搭日比谷線至「六本木站」</div>
+          <div class="transit-step"><span class="transit-icon">🚶</span> Roppongi Hills ⇄ Tokyo Midtown 步行約 10 分鐘</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">20:00 - 20:45</span>
+          <span class="cost-badge">約 400~450 日圓</span>
+        </div>
+        <div class="card-title">【龍貓】啟程返回橫濱</div>
+        <div class="card-desc">輕鬆搭車返回橫濱（預計 21:00 前抵達會合）。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚇</span> 「六本木站」搭乘 都營大江戶線 至「中目黑站」</div>
+          <div class="transit-step"><span class="transit-icon">🚃</span> 轉乘 東急東橫線（特急/急行）直達「橫濱站」</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">21:00 / 21:30</span>
+        </div>
+        <div class="card-title">三人合體慶功盛宴：焼肉むらき</div>
+        <div class="card-desc">已預約 焼肉むらき (Yakiniku Muraki)，享用頂級燒肉為演唱會與充實的一天完美慶功。</div>
       </div>
     </div>
+  </section>
 
-    <!-- Card 5 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">17:30 - 17:45</span>
-        <span class="cost-badge">約 180~210 日圓</span>
-      </div>
-      <div class="card-title">前往六本木</div>
-      <div class="card-desc">從澀谷搭地鐵短程前往六本木看點燈。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚇</span> 「澀谷站」搭乘 半藏門線 至「青山一丁目站」轉乘 都營大江戶線 至「六本木站」；或搭乘 日比谷線 直達「六本木站」</div>
-      </div>
+  <!-- DAY 4 -->
+  <section id="day4" class="day-section">
+    <div class="day-header-box">
+      <div class="day-header-title">DAY 4：成田山參道漫遊 ➔ 享用百年鰻魚飯 ➔ 返台 (BR195)</div>
+      <div class="day-header-sub">極推薦方案 C：成田山新勝寺參拜與川豐/駿河屋鰻魚飯</div>
     </div>
 
-    <!-- Card 6 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">17:45 - 19:45</span>
-        <span class="cost-badge free">免費 0 日圓</span>
+    <div class="timeline">
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">10:00 - 11:15</span>
+        </div>
+        <div class="card-title">退房與早餐</div>
+        <div class="card-desc">橫濱悠閒享用早餐，辦理退房準備出發。</div>
       </div>
-      <div class="card-title">六本木雙點燈巡禮 ＋ 輕食</div>
-      <div class="card-desc">賞六本木新城櫸坂通藍白燈海 ＋ 東京中城戶外燈飾。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚶</span> 六本木新城（Roppongi Hills）⇄ 東京中城（Tokyo Midtown）步行約 10 分鐘</div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">11:15 - 12:00</span>
+        </div>
+        <div class="card-title">移動前往東京車站</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 從橫濱搭乘 JR 東海道線 / 京濱東北線 至「東京車站」（約 30 分鐘）</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">12:10 - 13:20</span>
+          <span class="cost-badge">1,500 日圓</span>
+        </div>
+        <div class="card-title">機場巴士直達機場</div>
+        <div class="card-desc">東京車站八重洲南口巴士總站搭乘 AIRPORT BUS TYO-NRT 直達第一/第二航廈。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚌</span> 車程約 65-70 分鐘，班次密集隨到隨搭</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">13:20 - 14:00</span>
+        </div>
+        <div class="card-title">成田機場暫存行李</div>
+        <div class="card-desc">抵達成田機場先至 GPA / JAL ABC 人工寄物處寄存行李。</div>
+        <div class="transit-details">
+          <div class="transit-step"><span class="transit-icon">🚆</span> 搭乘電車 1 站（8 分鐘）至 JR / 京成「成田站」</div>
+        </div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">14:00 - 17:00</span>
+        </div>
+        <div class="card-title">成田山參道美食與參拜</div>
+        <div class="card-desc">漫步成田山參道，避開正午排隊人潮享用百年現烤鰻魚飯（川豐 / 駿河屋），參拜新勝寺。</div>
+      </div>
+
+      <div class="timeline-card" onclick="toggleComplete(this)">
+        <div class="checkbox-trigger"></div>
+        <div class="card-header">
+          <span class="time-badge">17:30 - 20:20</span>
+        </div>
+        <div class="card-title">返抵機場與搭機返台</div>
+        <div class="card-desc">17:30 返抵機場領取行李辦理 Check-in，逛免稅店後搭乘 BR195 (20:20 起飛) 返台。</div>
       </div>
     </div>
-
-    <!-- Card 7 -->
-    <div class="timeline-card" onclick="toggleComplete(this)">
-      <div class="checkbox-trigger"></div>
-      <div class="card-header">
-        <span class="time-badge">20:00 - 20:45</span>
-        <span class="cost-badge">約 400~450 日圓</span>
-      </div>
-      <div class="card-title">啟程返回橫濱</div>
-      <div class="card-desc">輕鬆搭車返回橫濱（預計 21:00 前抵達）。</div>
-      <div class="transit-details">
-        <div class="transit-step"><span class="transit-icon">🚇</span> 「六本木站」搭乘 都營大江戶線 至「中目黑站」</div>
-        <div class="transit-step"><span class="transit-icon">🚃</span> 轉乘 東急東橫線（特急/急行）直達「橫濱站」</div>
-      </div>
-    </div>
-
-  </main>
+  </section>
 
   <aside class="tips-box">
-    <div class="tips-title">💡 交通與地鐵資訊劃重點</div>
+    <div class="tips-title">💡 旅遊小提醒</div>
     <ul class="tips-list">
-      <li><strong>地鐵路線圖</strong>：點擊上方藍色按鈕可直接開啟 Official Tokyo Metro & 都營地鐵中英文路線圖。</li>
-      <li><strong>免買一日券</strong>：市區地鐵段車資約 360-390 日圓，未達 800 日圓一日券門檻。</li>
-      <li><strong>感應乘車</strong>：直接刷 iPhone Apple Wallet 內的 Suica 或 PASMO，進出站極速方便。</li>
+      <li><strong>DAY 1 寄物</strong>：若東京站寄物櫃滿櫃，可直接至 JR 丸之內地下剪票口外的黑貓宅急便或 ecbo cloak 人工寄物[span_4](start_span)[span_4](end_span)。</li>
+      <li><strong>DAY 3 東京交通</strong>：龍貓的東京快閃路線全程刷 iPhone Apple Wallet (Suica/PASMO) 最划算，免買地鐵一日券。</li>
+      <li><strong>DAY 4 機場巴士</strong>：八重洲南口 TYO-NRT 巴士約 10-15 分鐘一班，票價 1,500 日圓，非常省心[span_5](start_span)[span_5](end_span)。</li>
     </ul>
   </aside>
 
   <footer>
-    <p> Yokohama & Tokyo Day Trip Planner</p>
+    <p>Yokohama & Tokyo 4-Day Trip Planner</p>
   </footer>
 
   <script>
+    function switchDay(dayNum) {
+      document.querySelectorAll('.day-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === dayNum - 1);
+      });
+      document.querySelectorAll('.day-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(`day${dayNum}`).classList.add('active');
+    }
+
     function toggleComplete(card) {
       card.classList.toggle('completed');
       saveState();
@@ -420,11 +700,11 @@
     function saveState() {
       const cards = document.querySelectorAll('.timeline-card');
       const state = Array.from(cards).map(card => card.classList.contains('completed'));
-      localStorage.setItem('tokyo_itinerary_state', JSON.stringify(state));
+      localStorage.setItem('tokyo_4day_itinerary_state', JSON.stringify(state));
     }
 
     function loadState() {
-      const saved = localStorage.getItem('tokyo_itinerary_state');
+      const saved = localStorage.getItem('tokyo_4day_itinerary_state');
       if (saved) {
         const state = JSON.parse(saved);
         const cards = document.querySelectorAll('.timeline-card');
