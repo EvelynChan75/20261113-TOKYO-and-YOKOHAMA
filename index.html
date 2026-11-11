@@ -1,553 +1,675 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>東京與橫濱音樂美饌4日之旅 2026</title>
-    <!-- Google Fonts Huninn (粉圓體) & Noto Sans TC -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        washi: '#FFFCF6',
-                        ink: '#3E3A39',
-                        coral: '#F2A497',
-                        yamabuki: '#F6D27A',
-                        mizuiro: '#A8D3E6',
-                        wakatake: '#B9DAA5',
-                        coralLight: '#FCEBE8',
-                        yamabukiLight: '#FFF6DF',
-                        mizuiroLight: '#EBF5FA',
-                        wakatakeLight: '#F0F7EC',
-                    },
-                    fontFamily: {
-                        huninn: ['Huninn', 'Noto Sans TC', 'sans-serif'],
-                    },
-                    borderWidth: {
-                        '3': '3px',
-                    },
-                    boxShadow: {
-                        'pop': '4px 4px 0px #3E3A39',
-                        'pop-sm': '2px 2px 0px #3E3A39',
-                        'pop-lg': '6px 6px 0px #3E3A39',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FFFCF6;
-            color: #3E3A39;
-            font-family: 'Huninn', 'Noto Sans TC', sans-serif;
-            background-image: radial-gradient(#3e3a3915 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>東京與橫濱音樂美饌 4 日之旅 2026</title>
+  
+  <!-- Google Fonts: Huninn (粉圓體) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
 
-        /* 墨灰粗框手繪質感造型 */
-        .sketch-box {
-            border: 3px solid #3E3A39;
-            border-radius: 20px;
-            background-color: #FFFFFF;
-        }
+  <style>
+    /* ==========================================
+       日系繪本風 CSS 核心樣式
+       ========================================== */
+    :root {
+      --bg-paper: #FFFCF6;         /* 和紙白 */
+      --border-ink: #3E3A39;       /* 墨灰粗框 */
+      --pink-coral: #F2A497;       /* 珊瑚粉 */
+      --yellow-yamabuki: #F6D27A;  /* 山吹黃 */
+      --blue-mizuiro: #A8D3E6;     /* 水色 */
+      --green-wakatake: #B9DAA5;   /* 若竹綠 */
+      --text-dark: #3E3A39;
+      --card-shadow: 4px 4px 0px #3E3A39;
+      --card-shadow-active: 2px 2px 0px #3E3A39;
+    }
 
-        .sketch-btn {
-            border: 3px solid #3E3A39;
-            border-radius: 9999px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
-        }
-        .sketch-btn:active {
-            transform: translate(2px, 2px) !important;
-            box-shadow: 0px 0px 0px #3E3A39 !important;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Huninn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        /* 插畫輕微浮動動畫 */
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(1.5deg); }
-        }
-        @keyframes gentleWiggle {
-            0%, 100% { transform: rotate(-2deg); }
-            50% { transform: rotate(2deg); }
-        }
-        @keyframes popElastic {
-            0% { transform: scale(0.92); opacity: 0.6; }
-            70% { transform: scale(1.03); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    body {
+      background-color: var(--bg-paper);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
 
-        .anim-float { animation: gentleFloat 4s ease-in-out infinite; }
-        .anim-wiggle { animation: gentleWiggle 3s ease-in-out infinite; }
-        .anim-pop { animation: popElastic 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    /* 頂端固定導覽列 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-paper);
+      border-bottom: 3px solid var(--border-ink);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 0px rgba(62, 58, 57, 0.05);
+    }
 
-        /* 減少動態效果設定 */
-        @media (prefers-reduced-motion: reduce) {
-            .anim-float, .anim-wiggle, .anim-pop {
-                animation: none !important;
-            }
-            .sketch-btn {
-                transition: none !important;
-            }
-        }
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        /* 隱藏原生 checkbox */
-        .custom-checkbox input[type="checkbox"] {
-            display: none;
-        }
-        .custom-checkbox .checkmark {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #3E3A39;
-            border-radius: 8px;
-            background-color: #FFF;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-        .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-            background-color: #F6D27A;
-        }
-        .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
-            content: "✓";
-            font-weight: 900;
-            color: #3E3A39;
-            font-size: 16px;
-        }
-        .custom-checkbox input[type="checkbox"]:checked ~ .checklist-label {
-            text-decoration: line-through;
-            color: #8C8583;
-        }
-    </style>
+    .btn-ics {
+      background-color: var(--pink-coral);
+      color: var(--border-ink);
+      border: 2px solid var(--border-ink);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-ink);
+      transition: all 0.1s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-ics:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--border-ink);
+    }
+
+    /* 容器設定 */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* 首頁英雄區 */
+    .hero-card {
+      background-color: #FFFFFF;
+      border: 3px solid var(--border-ink);
+      border-radius: 24px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-svg {
+      width: 140px;
+      height: 120px;
+      margin: 0 auto 10px;
+      display: block;
+      animation: floatSlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    .hero-title {
+      font-size: 1.4rem;
+      color: var(--border-ink);
+      margin-bottom: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .countdown-badge {
+      display: inline-block;
+      background-color: var(--yellow-yamabuki);
+      border: 2px solid var(--border-ink);
+      border-radius: 16px;
+      padding: 4px 14px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      box-shadow: 2px 2px 0px var(--border-ink);
+    }
+
+    /* 區塊標題 */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 24px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 航班與住宿資訊卡片 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .picture-card {
+      background: #FFF;
+      border: 3px solid var(--border-ink);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .picture-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      border-bottom: 2px dashed #EEE;
+      padding-bottom: 6px;
+    }
+
+    .info-row {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* 每日行程切換按鈕 */
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 70px;
+      background-color: #FFF;
+      border: 3px solid var(--border-ink);
+      border-radius: 16px;
+      padding: 8px 4px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-ink);
+      transition: transform 0.1s ease;
+    }
+
+    .tab-btn.active {
+      background-color: var(--yellow-yamabuki);
+      transform: translateY(-2px);
+      box-shadow: 3px 4px 0px var(--border-ink);
+    }
+
+    .tab-btn .day-num {
+      font-size: 0.8rem;
+      display: block;
+      color: #555;
+    }
+    .tab-btn .day-date {
+      font-size: 0.95rem;
+    }
+
+    /* 行程時間軸卡片 */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      background-color: #FFF;
+      border: 3px solid var(--border-ink);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease;
+    }
+
+    .timeline-item:active {
+      transform: scale(0.99);
+    }
+
+    .time-badge {
+      display: inline-block;
+      background-color: var(--blue-mizuiro);
+      border: 2px solid var(--border-ink);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .must-visit {
+      background-color: var(--pink-coral);
+      color: var(--border-ink);
+      border: 2px solid var(--border-ink);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-left: 6px;
+    }
+
+    .item-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .item-desc {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      border: 1.5px solid var(--border-ink);
+      border-radius: 10px;
+      padding: 2px 6px;
+      background-color: #F0F0F0;
+    }
+    .tag-trans { background-color: var(--green-wakatake); }
+    .tag-cost { background-color: var(--yellow-yamabuki); }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #DDD;
+    }
+
+    .action-btn {
+      flex: 1;
+      background-color: #FFF;
+      border: 2px solid var(--border-ink);
+      border-radius: 12px;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      color: var(--border-ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .action-btn:hover {
+      background-color: #F8F8F8;
+    }
+
+    /* 提示說明貼紙 */
+    .tip-box {
+      background-color: #FFF9E6;
+      border: 2px dashed var(--border-ink);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 清單區塊 (Checklist) */
+    .checklist-card {
+      background-color: #FFF;
+      border: 3px solid var(--border-ink);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--pink-coral);
+      cursor: pointer;
+    }
+
+    .check-item.done span {
+      text-decoration: line-through;
+      color: #AAA;
+    }
+
+    /* 減少動態效果支援 */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-svg, .tab-btn, .timeline-item {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col pb-16">
+<body>
 
-    <!-- 頂端固定導覽列 -->
-    <nav class="sticky top-0 z-50 bg-[#FFFCF6]/90 backdrop-blur-md border-b-3 border-ink px-4 py-2.5">
-        <div class="max-w-3xl mx-auto flex items-center justify-between">
-            <a href="#top" class="flex items-center gap-2 font-bold text-lg tracking-wide text-ink">
-                <!-- SVG 電車/圖示 -->
-                <svg class="w-7 h-7 text-coral" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="14" width="44" height="36" rx="10" fill="#F2A497" stroke="#3E3A39" stroke-width="4"/>
-                    <rect x="16" y="20" width="14" height="12" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
-                    <rect x="34" y="20" width="14" height="12" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
-                    <circle cx="20" cy="40" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                    <circle cx="44" cy="40" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                    <path d="M26 50H38" stroke="#3E3A39" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-                <span>東京與橫濱之旅</span>
-            </a>
-            <div class="hidden sm:flex items-center gap-1.5 text-sm font-bold">
-                <a href="#flight" class="px-3 py-1.5 rounded-full hover:bg-mizuiroLight transition">✈️ 航班</a>
-                <a href="#itinerary" class="px-3 py-1.5 rounded-full hover:bg-yamabukiLight transition">📅 行程</a>
-                <a href="#hotel" class="px-3 py-1.5 rounded-full hover:bg-wakatakeLight transition">🏨 住宿</a>
-                <a href="#checklist" class="px-3 py-1.5 rounded-full hover:bg-coralLight transition">📝 清單</a>
-            </div>
+  <!-- 固定頂端列 -->
+  <header>
+    <div class="brand-title">
+      <span>🎌</span>
+      <span>東京與橫濱音樂美饌之旅</span>
+    </div>
+    <button class="btn-ics" onclick="downloadICS()">
+      <span>📲</span> 下載 iCloud 日曆 (.ics)
+    </button>
+  </header>
+
+  <div class="container">
+    <!-- 首頁 Hero 區塊 -->
+    <div class="hero-card">
+      <!-- 手繪風 SVG 插圖：東京鐵塔與太陽 -->
+      <svg class="hero-svg" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="105" cy="35" r="22" fill="#F2A497"/>
+        <path d="M70 15 L78 105 H62 L70 15 Z" fill="#3E3A39"/>
+        <path d="M50 105 L70 30 L90 105" stroke="#3E3A39" stroke-width="4" stroke-linecap="round"/>
+        <line x1="55" y1="80" x2="85" y2="80" stroke="#F6D27A" stroke-width="4"/>
+        <line x1="60" y1="55" x2="80" y2="55" stroke="#F6D27A" stroke-width="4"/>
+        <circle cx="70" cy="25" r="4" fill="#A8D3E6"/>
+      </svg>
+      <h1 class="hero-title">東京 & 橫濱 4日自由行</h1>
+      <div class="hero-subtitle">2026.11.13 (五) – 2026.11.16 (一)</div>
+      <div class="countdown-badge" id="countdownText">倒數中...</div>
+    </div>
+
+    <!-- 導航提示貼紙 -->
+    <div class="tip-box">
+      💡 <b>提示：</b>網頁上的行程地點<b>「點兩下 (Double Tap)」</b>可直接自動打開手機地圖開啟導航！
+    </div>
+
+    <!-- 航班與住宿卡片 -->
+    <div class="section-title">✈️ 航班與住宿資訊</div>
+    <div class="info-grid">
+      <div class="picture-card">
+        <div class="picture-card-header">
+          <span>🛫 去程航班 (BR184)</span>
         </div>
-    </nav>
+        <div class="info-row"><span>起飛時間：</span><b>11/13 (五) 12:00</b></div>
+        <div class="info-row"><span>到達地點：</span><b>成田國際機場 (NRT)</b></div>
+        <div class="info-row"><span>抵達時間：</span><b>13:30 (預估通關完成)</b></div>
+      </div>
 
-    <main class="max-w-3xl mx-auto px-4 w-full flex-grow space-y-8 mt-4" id="top">
+      <div class="picture-card">
+        <div class="picture-card-header">
+          <span>🛬 回程航班 (BR195)</span>
+        </div>
+        <div class="info-row"><span>起飛時間：</span><b>11/16 (一) 20:20</b></div>
+        <div class="info-row"><span>起飛機場：</span><b>成田國際機場 (NRT)</b></div>
+        <div class="info-row"><span>報到建議：</span><b>17:30 前返抵機場 Check-in</b></div>
+      </div>
 
-        <!-- HERO 區域 -->
-        <section class="sketch-box p-6 bg-yamabukiLight shadow-pop relative overflow-hidden">
-            <!-- 背景裝飾物 SVG -->
-            <div class="absolute -right-4 -top-4 opacity-30 pointer-events-none anim-float">
-                <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="40" fill="#F6D27A" stroke="#3E3A39" stroke-width="4"/>
-                    <path d="M30 65 Q50 30 70 65 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="4"/>
-                    <path d="M43 42 L50 30 L57 42 Z" fill="#FFF"/>
-                </svg>
-            </div>
+      <div class="picture-card">
+        <div class="picture-card-header">
+          <span>🏨 全程住宿飯店</span>
+        </div>
+        <div class="info-row"><span>飯店名稱：</span><b>橫濱三井花園飯店普米爾</b></div>
+        <div class="info-row"><span>飯店地址：</span><b>神奈川縣橫濱市西區港未來</b></div>
+        <div style="margin-top: 6px;">
+          <a class="action-btn" style="width:100%" href="javascript:void(0)" onclick="openMap('橫濱三井花園飯店普米爾')">🧭 開啟飯店導航</a>
+        </div>
+      </div>
+    </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-6 relative z-10">
-                <!-- 可愛主插畫 -->
-                <div class="w-36 h-36 flex-shrink-0 anim-float">
-                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <!-- 富士山 -->
-                        <path d="M 30 150 L 100 40 L 170 150 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="6" stroke-linejoin="round"/>
-                        <path d="M 75 79 L 100 40 L 125 79 Q 112 90 100 85 Q 88 90 75 79 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="5" stroke-linejoin="round"/>
-                        <!-- 太陽 -->
-                        <circle cx="155" cy="45" r="22" fill="#F2A497" stroke="#3E3A39" stroke-width="5"/>
-                        <!-- 櫻花/音符小裝飾 -->
-                        <path d="M 25 60 Q 30 45 40 55 Q 50 65 35 75 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="4"/>
-                        <!-- 手繪音符 -->
-                        <path d="M 160 110 L 160 135 M 175 105 L 175 130 M 160 110 L 175 105" stroke="#3E3A39" stroke-width="5" stroke-linecap="round"/>
-                        <circle cx="153" cy="135" r="7" fill="#3E3A39"/>
-                        <circle cx="168" cy="130" r="7" fill="#3E3A39"/>
-                    </svg>
-                </div>
+    <!-- 每日行程區塊 -->
+    <div class="section-title">📅 每日行程規劃</div>
+    
+    <!-- 日期頁籤按鈕 -->
+    <div class="day-tabs">
+      <div class="tab-btn active" onclick="switchDay(1)">
+        <span class="day-num">Day 1</span>
+        <span class="day-date">11/13 五</span>
+      </div>
+      <div class="tab-btn" onclick="switchDay(2)">
+        <span class="day-num">Day 2</span>
+        <span class="day-date">11/14 六</span>
+      </div>
+      <div class="tab-btn" onclick="switchDay(3)">
+        <span class="day-num">Day 3</span>
+        <span class="day-date">11/15 日</span>
+      </div>
+      <div class="tab-btn" onclick="switchDay(4)">
+        <span class="day-num">Day 4</span>
+        <span class="day-date">11/16 一</span>
+      </div>
+    </div>
 
-                <div class="space-y-3 text-center md:text-left flex-grow">
-                    <div class="inline-block bg-coral text-white px-3 py-1 rounded-full text-xs font-bold border-2 border-ink shadow-pop-sm">
-                        2026.11.13 (五) － 11.16 (一) 4日遊
-                    </div>
-                    <h1 class="text-2xl sm:text-3xl font-bold text-ink leading-tight">
-                        東京與橫濱音樂美饌之旅 🎶
-                    </h1>
-                    <p class="text-xs sm:text-sm text-slate-700 font-medium">
-                        成員：龍貓 / Zoe / Macoto ｜ 鎌倉江之島・Kirin見學・aiko Live 演唱會
-                    </p>
+    <!-- 行程時間軸內容區 -->
+    <div class="timeline" id="timelineContent">
+      <!-- 內容將由 JavaScript 動態渲染 -->
+    </div>
 
-                    <!-- 出發倒數計時器 -->
-                    <div class="bg-white p-3 rounded-xl border-3 border-ink shadow-pop-sm flex items-center justify-between gap-2 mt-2">
-                        <div class="text-xs font-bold text-slate-600 flex items-center gap-1">
-                            <span>⏰ 距離出發還有：</span>
-                        </div>
-                        <div id="countdown" class="text-base sm:text-lg font-bold text-coral tracking-wider">
-                            計算中...
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- 待辦事項與行李清單區塊 -->
+    <div class="section-title">📝 行李與出發前清單</div>
+    
+    <div class="checklist-card">
+      <div class="picture-card-header">
+        <span>📌 出發前準備</span>
+      </div>
+      <div id="preChecklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>護照正本 (有效期限6個月以上)</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>網卡 / 日本 eSIM 卡設定</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>Visit Japan Web 入境 QR Code 填寫</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>日幣現金與信用卡準備</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>Kirin 啤酒廠與燒肉店預約確認信</span></label>
+      </div>
+    </div>
 
-        <!-- 航班資訊卡片 -->
-        <section id="flight" class="space-y-3">
-            <div class="flex items-center gap-2">
-                <span class="bg-mizuiro p-1.5 rounded-lg border-2 border-ink shadow-pop-sm">✈️</span>
-                <h2 class="text-xl font-bold text-ink">航班資訊</h2>
-            </div>
+    <div class="checklist-card">
+      <div class="picture-card-header">
+        <span>🧳 行李打包清單</span>
+      </div>
+      <div id="luggageChecklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>個人換洗衣物 & 保暖外衣</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>行動電源與充電線材</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>個人常備藥品與貼布</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>舒適散步鞋 (每日走步預備)</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"> <span>折疊傘 / 雨具</span></label>
+      </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- 去程 -->
-                <div class="sketch-box p-4 bg-mizuiroLight shadow-pop relative">
-                    <span class="absolute top-3 right-3 bg-mizuiro text-ink font-bold text-xs px-2.5 py-0.5 rounded-full border-2 border-ink">去程 BR184</span>
-                    <div class="text-xs text-slate-500 font-bold mb-2">11/13 (五) 桃園 ✈ 成田</div>
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <div class="text-xl font-bold">12:00 抵達</div>
-                            <div class="text-xs text-slate-600">成田國際機場 (NRT)</div>
-                        </div>
-                        <div class="text-2xl">➔</div>
-                        <div class="text-right">
-                            <div class="text-xl font-bold">13:30</div>
-                            <div class="text-xs text-slate-600">東京車站 (巴士直達)</div>
-                        </div>
-                    </div>
-                </div>
+  </div>
 
-                <!-- 回程 -->
-                <div class="sketch-box p-4 bg-coralLight shadow-pop relative">
-                    <span class="absolute top-3 right-3 bg-coral text-white font-bold text-xs px-2.5 py-0.5 rounded-full border-2 border-ink">回程 BR195</span>
-                    <div class="text-xs text-slate-500 font-bold mb-2">11/16 (一) 成田 ✈ 桃園</div>
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <div class="text-xl font-bold">20:20 起飛</div>
-                            <div class="text-xs text-slate-600">請 17:30 前抵達機場</div>
-                        </div>
-                        <div class="text-2xl">✈</div>
-                        <div class="text-right">
-                            <div class="text-xl font-bold">成田山美食</div>
-                            <div class="text-xs text-slate-600">下午享用百年現烤鰻魚飯</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <script>
+    // ==========================================
+    // 行程資料集 (包含時間、地點、交通與估算費用)
+    // ==========================================
+    const tripData = {
+      1: [
+        { time: "12:00 – 13:30", title: "航班抵達成田機場", desc: "BR184 抵達成田機場，辦理入境通關。", trans: "機場巴士直達東京車站", cost: "" },
+        { time: "13:30 – 15:30", title: "東京車站寄放行李", desc: "於丸之內/八重洲出口寄物處寄放行李（若滿櫃可至黑貓宅急便或 ecbo cloak 人工寄物）。", trans: "徒步", cost: "" },
+        { time: "15:30 – 17:00", title: "銀座漫步與抽號碼牌", desc: "16:00 至登龍門壽司抽號碼牌，漫遊 Ginza Six、物產館與木村屋。", trans: "散步", cost: "" },
+        { time: "17:00 – 19:30", title: "登龍門壽司晚餐", desc: "享用立食握壽司體驗，飯後輕逛 Uniqlo。", trans: "徒步", cost: "", must: true },
+        { time: "19:30 – 21:00", title: "Ginza Lion Beer Hall 七丁目", desc: "體驗日本現存最古老啤酒館小酌。", trans: "徒步", cost: "" },
+        { time: "21:00 – 22:30", title: "移動至橫濱 Check-in", desc: "返回東京站取行李，搭電車前往橫濱辦理入住。", trans: "JR 東海道線 / 橫須賀線", cost: "" }
+      ],
+      2: [
+        { time: "10:00 – 10:40", title: "前往湘南藤澤", desc: "飯店出發前往 JR 藤澤站。", trans: "JR 東海道線 (約20分鐘)", cost: "" },
+        { time: "10:40 – 14:30", title: "江之島漫遊 & 午餐", desc: "漫遊江之島，午餐享用吻仔魚丼與海鮮天婦羅。", trans: "江之電巴士 / 小田急電鐵", cost: "", must: true },
+        { time: "14:30 – 16:30", title: "長谷站 鎌倉大佛", desc: "參觀古都地標高德院鎌倉大佛，遠眺湘南海岸。", trans: "江之電至長谷站", cost: "" },
+        { time: "16:30 – 18:30", title: "鎌倉小町通 & 鶴岡八幡宮", desc: "逛小町通商店街買鳩餅乾伴手禮，參拜鶴岡八幡宮賞夕陽。", trans: "江之電至鎌倉站", cost: "" },
+        { time: "19:00 – 21:30", title: "橫濱野毛橫丁居酒屋", desc: "返回橫濱體驗昭和復古串燒與居酒屋文化。", trans: "電車返回橫濱", cost: "", must: true }
+      ],
+      3: [
+        { time: "11:00 – 12:30", title: "Kirin Brewery 啤酒廠見學", desc: "體驗啤酒製造工序與鮮飲試飲 (已完成預約)。", trans: "從橫濱搭京急本線至生麥站步行", cost: "420 日圓", must: true },
+        { time: "13:00 – 14:00", title: "出發前往東京市區", desc: "從生麥站前往外苑前站/青山一丁目站。", trans: "京急本線轉乘地鐵", cost: "420 日圓" },
+        { time: "14:00 – 15:00", title: "明治神宮外苑銀杏大道", desc: "漫步欣賞金黃銀杏大道並拍照取景。", trans: "徒步散步", cost: "0 日圓", must: true },
+        { time: "15:00 – 16:15", title: "青山通 & 表參道下午茶", desc: "享用咖啡甜點，順著貓街與明治通散步至澀谷。", trans: "徒步散步", cost: "0 日圓" },
+        { time: "16:15 – 17:30", title: "澀谷潮流地標巡禮", desc: "朝聖澀谷十字路口、宮下公園與 SHIBUYA SKY 周邊。", trans: "徒步散步", cost: "0 日圓" },
+        { time: "17:30 – 17:45", title: "前往六本木 (個人獨自行動)", desc: "搭乘地鐵前往六本木地區展開燈飾巡禮。", trans: "半藏門線轉大江戶線 / 日比谷線", cost: "180~210 日圓" },
+        { time: "17:45 – 20:30", title: "六本木雙點燈巡禮", desc: "賞六本木新城櫸坂通藍白燈海與 Tokyo Midtown 戶外燈飾，自理輕食。", trans: "區域徒步", cost: "0 日圓", must: true },
+        { time: "20:45 – 21:30", title: "啟程返回橫濱 (21:30 抵達)", desc: "搭地鐵至中目黑轉乘東急東橫線直達橫濱。", trans: "都營大江戶線 + 東急東橫線", cost: "400 日圓" },
+        { time: "21:30 – 23:00", title: "合體晚宴：Yakiniku Muraki", desc: "3人會合享用頂級燒肉慶功！", trans: "步行至燒肉店", cost: "", must: true }
+      ],
+      4: [
+        { time: "10:00 – 11:15", title: "退房與悠閒早餐", desc: "飯店辦理退房，準備前往東京車站。", trans: "徒步", cost: "" },
+        { time: "11:15 – 12:00", title: "橫濱移動至東京車站", desc: "搭乘電車前往東京車站八重洲口。", trans: "JR 東海道線 / 京濱東北線", cost: "約 480 日圓" },
+        { time: "12:10 – 13:20", title: "搭乘機場巴士至成田機場", desc: "於八重洲南口搭乘 AIRPORT BUS TYO-NRT 直達機場。", trans: "機場巴士 (車程約65分鐘)", cost: "1,500 日圓" },
+        { time: "14:00 – 17:00", title: "成田山參道 & 百年鰻魚飯", desc: "寄存行李後搭電車1站至成田山參拜新勝寺、享用現烤鰻魚飯 (川豐/駿河屋)。", trans: "JR/京成電車 1站", cost: "約 200 日圓", must: true },
+        { time: "17:30 – 20:20", title: "返抵機場 Check-in & 返航", desc: "17:30 拿行李辦理登機，逛免稅店搭乘 BR195 (20:20起飛) 順利返台。", trans: "電車返回成田機場", cost: "" }
+      ]
+    };
 
-        <!-- 每日行程切換區塊 -->
-        <section id="itinerary" class="space-y-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="bg-yamabuki p-1.5 rounded-lg border-2 border-ink shadow-pop-sm">📅</span>
-                    <h2 class="text-xl font-bold text-ink">每日行程規劃</h2>
-                </div>
-                <span class="text-xs text-slate-500 font-bold">點選日期看詳細</span>
-            </div>
+    // ==========================================
+    // 動態渲染行程
+    // ==========================================
+    function switchDay(day) {
+      document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+        btn.classList.toggle('active', index === (day - 1));
+      });
 
-            <!-- 天數切換按鈕 (4天) -->
-            <div class="grid grid-cols-4 gap-2">
-                <button onclick="switchDay(1)" id="dayBtn-1" class="sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-yamabuki shadow-pop">
-                    <div>Day 1</div>
-                    <div class="text-[10px] font-normal sm:font-bold opacity-80">11/13 (五)</div>
-                </button>
-                <button onclick="switchDay(2)" id="dayBtn-2" class="sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-white shadow-pop">
-                    <div>Day 2</div>
-                    <div class="text-[10px] font-normal sm:font-bold opacity-80">11/14 (六)</div>
-                </button>
-                <button onclick="switchDay(3)" id="dayBtn-3" class="sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-white shadow-pop">
-                    <div>Day 3</div>
-                    <div class="text-[10px] font-normal sm:font-bold opacity-80">11/15 (日)</div>
-                </button>
-                <button onclick="switchDay(4)" id="dayBtn-4" class="sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-white shadow-pop">
-                    <div>Day 4</div>
-                    <div class="text-[10px] font-normal sm:font-bold opacity-80">11/16 (一)</div>
-                </button>
-            </div>
+      const container = document.getElementById('timelineContent');
+      container.innerHTML = '';
 
-            <!-- 行程內容容器 -->
-            <div id="itineraryContent" class="sketch-box p-4 sm:p-6 bg-white shadow-pop space-y-4 min-h-[380px]">
-                <!-- JavaScript 將會動態渲染內容 -->
-            </div>
-        </section>
+      tripData[day].forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'timeline-item';
+        
+        // 雙擊開啟 Google 地圖導航
+        div.ondblclick = () => openMap(item.title);
 
-        <!-- 住宿資訊 -->
-        <section id="hotel" class="space-y-3">
-            <div class="flex items-center gap-2">
-                <span class="bg-wakatake p-1.5 rounded-lg border-2 border-ink shadow-pop-sm">🏨</span>
-                <h2 class="text-xl font-bold text-ink">全程住宿資訊</h2>
-            </div>
+        const mustBadge = item.must ? `<span class="must-visit">★ 必去/重點</span>` : '';
+        const costTag = item.cost ? `<span class="tag tag-cost">💰 IC車資: ${item.cost}</span>` : '';
+        const googleCalUrl = getGoogleCalendarUrl(item.title, item.desc, item.time, day);
 
-            <div class="sketch-box p-5 bg-wakatakeLight shadow-pop flex flex-col sm:flex-row items-center gap-5">
-                <div class="w-24 h-24 flex-shrink-0 bg-wakatake rounded-2xl border-3 border-ink flex items-center justify-center p-3 anim-wiggle">
-                    <svg viewBox="0 0 64 64" fill="none" class="w-full h-full">
-                        <path d="M12 54V18L32 8L52 18V54H12Z" fill="#FFF" stroke="#3E3A39" stroke-width="4" stroke-linejoin="round"/>
-                        <rect x="22" y="24" width="8" height="8" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                        <rect x="34" y="24" width="8" height="8" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                        <rect x="22" y="36" width="8" height="8" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                        <rect x="34" y="36" width="8" height="8" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-                        <rect x="26" y="46" width="12" height="8" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-                    </svg>
-                </div>
-                <div class="space-y-2 text-center sm:text-left flex-grow">
-                    <span class="bg-wakatake text-ink text-xs px-2.5 py-0.5 rounded-full border-2 border-ink font-bold">連住 3 晚</span>
-                    <h3 class="text-lg font-bold text-ink">橫濱三井花園飯店普米爾</h3>
-                    <p class="text-xs text-slate-600">Mitsui Garden Hotel Yokohama Minatomirai Premier</p>
-                    <div class="text-xs text-slate-700 bg-white p-2.5 rounded-xl border-2 border-ink inline-block mt-1">
-                        📍 鄰近橫濱港未來地區，景觀優美、交通便利
-                    </div>
-                </div>
-            </div>
-        </section>
+        div.innerHTML = `
+          <div>
+            <span class="time-badge">⏰ ${item.time}</span>
+            ${mustBadge}
+          </div>
+          <div class="item-title">${item.title}</div>
+          <div class="item-desc">${item.desc}</div>
+          <div class="tag-group">
+            <span class="tag tag-trans">🚃 ${item.trans}</span>
+            ${costTag}
+          </div>
+          <div class="card-actions">
+            <a class="action-btn" href="javascript:void(0)" onclick="openMap('${item.title}')">🧭 開啟導航</a>
+            <a class="action-btn" href="${googleCalUrl}" target="_blank">📅 加到 Google 日曆</a>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
 
-        <!-- 準備清單 & 打包清單 -->
-        <section id="checklist" class="space-y-4">
-            <div class="flex items-center gap-2">
-                <span class="bg-coral p-1.5 rounded-lg border-2 border-ink shadow-pop-sm text-white">📝</span>
-                <h2 class="text-xl font-bold text-ink">清單與備忘錄</h2>
-            </div>
+    // 地圖導航跳轉
+    function openMap(query) {
+      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+      window.open(url, '_blank');
+    }
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- 出發前準備清單 -->
-                <div class="sketch-box p-4 bg-coralLight shadow-pop space-y-3">
-                    <h3 class="font-bold text-base border-b-3 border-ink pb-2 flex items-center gap-1.5">
-                        <span>📌</span> 出發前確認清單
-                    </h3>
-                    <div class="space-y-2 text-xs sm:text-sm" id="prepChecklist">
-                        <!-- JS 渲染 -->
-                    </div>
-                </div>
+    // Google Calendar 連結產生器
+    function getGoogleCalendarUrl(title, desc, timeStr, day) {
+      const dates = { 1: '20261113', 2: '20261114', 3: '20261115', 4: '20261116' };
+      const dateStr = dates[day];
+      return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(desc)}&dates=${dateStr}/${dateStr}`;
+    }
 
-                <!-- 行李打包清單 -->
-                <div class="sketch-box p-4 bg-yamabukiLight shadow-pop space-y-3">
-                    <h3 class="font-bold text-base border-b-3 border-ink pb-2 flex items-center gap-1.5">
-                        <span>🧳</span> 行李打包清單
-                    </h3>
-                    <div class="space-y-2 text-xs sm:text-sm" id="luggageChecklist">
-                        <!-- JS 渲染 -->
-                    </div>
-                </div>
-            </div>
-        </section>
+    // 倒數計時器
+    function updateCountdown() {
+      const targetDate = new Date('2026-11-13T12:00:00');
+      const now = new Date();
+      const diff = targetDate - now;
 
-    </main>
+      if (diff <= 0) {
+        document.getElementById('countdownText').innerText = '🎉 出發囉！旅途愉快！';
+        return;
+      }
 
-    <footer class="text-center text-xs text-slate-500 py-6 mt-10">
-        <p>祝 龍貓、Zoe、Macoto 擁有美好的東京與橫濱之旅！✨</p>
-    </footer>
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById('countdownText').innerText = `距離出發還有 ${days} 天 ${hours} 小時`;
+    }
 
-    <!-- JavaScript 腳本 -->
-    <script>
-        // 行程資料集
-        const itineraryData = {
-            1: {
-                title: "Day 1：抵達東京、銀座美食漫遊與橫濱 Check-in",
-                subtitle: "11/13 (五) ｜ 銀座壽司與啤酒館微醺夜",
-                events: [
-                    { time: "12:00 - 13:30", title: "航班抵達成田機場 (BR184)", desc: "入境通關，搭乘機場巴士直達東京車站。", tag: "巴士直達", tagBg: "bg-mizuiro" },
-                    { time: "13:30 - 15:30", title: "東京車站寄物", desc: "丸之內/八重洲出口寄物處寄放行李。(若滿櫃可至黑貓宅急便或 ecbo cloak)", tag: "寄物", tagBg: "bg-yamabuki" },
-                    { time: "15:30 - 17:00", title: "銀座散步漫遊", desc: "16:00 至登龍門壽司抽號碼牌，隨後逛 Ginza Six、物產館、木村屋。", tag: "散步", tagBg: "bg-wakatake" },
-                    { time: "17:00 - 19:30", title: "美食晚餐：登龍門壽司", desc: "進場享用立食握壽司體驗，飯後輕逛 Uniqlo。", tag: "必去美食", tagBg: "bg-coral", isMust: true },
-                    { time: "19:30 - 21:00", title: "微醺體驗：Ginza Lion Beer Hall", desc: "至銀座七丁目體驗日本現存最古老啤酒館小酌。", tag: "美食微醺", tagBg: "bg-yamabuki" },
-                    { time: "21:00 - 22:30", title: "移動至橫濱 Check-in", desc: "返東京站取行李，搭乘 JR 東海道線/橫須賀線直達橫濱辦理入住。", tag: "JR 電車", tagBg: "bg-mizuiro" }
-                ]
-            },
-            2: {
-                title: "Day 2：湘南海岸漫遊、江之島、鎌倉大佛與野毛夜光",
-                subtitle: "11/14 (六) ｜ 古都古蹟與湘南海岸風光",
-                events: [
-                    { time: "10:00 - 10:40", title: "出發前往湘南", desc: "橫濱飯店出發，搭乘 JR 東海道線至 JR 藤澤站 (約 20 分鐘)。", tag: "JR 電車", tagBg: "bg-mizuiro" },
-                    { time: "10:40 - 14:30", title: "江之島漫遊 & 午餐", desc: "轉乘江之電巴士(F3/F31)或小田急至江之島。午餐享用海鮮吻仔魚丼/天婦羅。", tag: "必去景點", tagBg: "bg-coral", isMust: true },
-                    { time: "14:30 - 16:30", title: "長谷站 參觀鎌倉大佛", desc: "搭乘江之電至「長谷站」，參觀經典地標鎌倉大佛(高德院)，遠眺湘南海岸。", tag: "江之電", tagBg: "bg-wakatake" },
-                    { time: "16:30 - 18:30", title: "鎌倉小町通 & 鶴岡八幡宮", desc: "搭乘江之電至「鎌倉站」，逛小町通商店街買伴手禮(鴿子餅乾等)。", tag: "老街散步", tagBg: "bg-yamabuki" },
-                    { time: "19:00 - 21:30", title: "橫濱野毛橫丁晚餐", desc: "返回橫濱，至野毛橫丁或橫濱站周邊體驗昭和復古串燒與居酒屋文化。", tag: "居酒屋", tagBg: "bg-coral" }
-                ]
-            },
-            3: {
-                title: "Day 3：Kirin 啤酒廠、東京賞楓燈飾與橫濱燒肉慶功",
-                subtitle: "11/15 (日) ｜ 銀杏賞楓、六本木聖誕燈飾與燒肉饗宴",
-                events: [
-                    { time: "11:00 - 12:30", title: "Kirin 啤酒橫濱工廠見學", desc: "從橫濱搭京急本線至「生麥站」步行前往。體驗啤酒工序與試飲。(已預約完成)", tag: "已預約", tagBg: "bg-wakatake", isMust: true, cost: "車資約 420日圓" },
-                    { time: "13:00 - 14:00", title: "出發前往東京市區", desc: "步行至生麥站搭京急本線，轉乘地鐵至外苑前站或青山一丁目站。", tag: "京急/地鐵", tagBg: "bg-mizuiro", cost: "車資約 420日圓" },
-                    { time: "14:00 - 15:00", title: "明治神宮外苑銀杏大道", desc: "漫步欣賞金黃銀杏大道並拍照取景。", tag: "賞楓銀杏", tagBg: "bg-yamabuki", isMust: true },
-                    { time: "15:00 - 16:15", title: "青山通 & 表參道散步下午茶", desc: "沿青山通步行至表參道，享受咖啡甜點，順著貓街/明治通散步至澀谷。", tag: "下午茶散步", tagBg: "bg-wakatake" },
-                    { time: "16:15 - 17:30", title: "澀谷潮流地標巡禮", desc: "朝聖澀谷十字路口、宮下公園 (MIYASHITA PARK) 或 SHIBUYA SKY 周邊商場。", tag: "澀谷漫步", tagBg: "bg-mizuiro" },
-                    { 
-                        time: "17:30 - 20:30", 
-                        title: "🚶‍♂️ 獨自行動：六本木雙點燈巡禮", 
-                        desc: "17:30 澀谷搭地鐵至六本木。賞「六本木新城」櫸坂通藍白燈海 +「東京中城」戶外聖誕燈飾，自理輕食。", 
-                        tag: "個人路線", 
-                        tagBg: "bg-coral", 
-                        isMust: true,
-                        cost: "車資約 180~210日圓" 
-                    },
-                    { time: "20:45 - 21:30", title: "啟程返回橫濱 (21:30 抵達)", desc: "六本木站搭都營大江戶線至「中目黑站」，轉乘東急東橫線(特急/急行)直達橫濱。", tag: "東急東橫線", tagBg: "bg-mizuiro", cost: "車資約 400日圓" },
-                    { time: "21:30 - 23:00", title: "3人合體晚宴：Yakiniku Muraki", desc: "返抵橫濱後直接前往預約好的 Yakiniku Muraki (焼肉むらき) 享用頂級燒肉慶功！", tag: "頂級燒肉", tagBg: "bg-yamabuki", isMust: true }
-                ]
-            },
-            4: {
-                title: "Day 4：成田山參道漫遊、百年鰻魚飯與返台",
-                subtitle: "11/16 (一) ｜ 成田山參拜與完美歸途",
-                events: [
-                    { time: "10:00 - 11:15", title: "飯店悠閒退房與出發", desc: "橫濱享用早餐，退房搭乘 JR 電車前往東京車站 (車程約 30 分鐘)。", tag: "退房移動", tagBg: "bg-mizuiro" },
-                    { time: "12:10 - 13:20", title: "搭乘機場巴士直達機場", desc: "東京車站八重洲南口搭乘 AIRPORT BUS TYO-NRT 直達成田機場 (車資 1,500日圓 / 車程約 65分鐘)。", tag: "機場巴士", tagBg: "bg-yamabuki" },
-                    { time: "13:20 - 14:00", title: "寄放行李與轉乘", desc: "抵達成田機場暫存行李 (GPA/JAL ABC)，搭電車 1 站 (約 8分鐘) 至 JR/京作成田站。", tag: "寄行李", tagBg: "bg-wakatake" },
-                    { time: "14:00 - 17:00", title: "成田山參道 & 百年鰻魚飯", desc: "漫步成田山參道、參拜新勝寺。享用百年現烤鰻魚飯(川豐/駿河屋)，避開午間人潮。", tag: "必去美食", tagBg: "bg-coral", isMust: true },
-                    { time: "17:30 - 20:20", title: "返抵機場與登機 (BR195)", desc: "17:30 返抵機場取行李、Check-in、悠閒逛免稅店。20:20 起飛返台！", tag: "返台航班", tagBg: "bg-mizuiro" }
-                ]
-            }
-        };
+    // 打勾清單狀態
+    function toggleCheck(el) {
+      if (el.checked) {
+        el.parentElement.classList.add('done');
+      } else {
+        el.parentElement.classList.remove('done');
+      }
+    }
 
-        // 清單資料
-        const prepList = [
-            "護照 (確認有效期 6 個月以上)",
-            "日圓現金 & 信用卡",
-            "Visit Japan Web 入境填寫完成",
-            "網卡 eSIM / 實體卡準備",
-            "Suica / PASMO 交通卡加值",
-            "Kirin 啤酒廠預約確認信 (Day 3)",
-            "Yakiniku Muraki 燒肉預約確認 (Day 3)"
-        ];
+    // 動態生成並下載 .ics 行事曆檔案
+    function downloadICS() {
+      let icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tokyo Yokohama Trip 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:東京與橫濱音樂美饌之旅 2026
+`;
 
-        const luggageList = [
-            "個人盥洗用品與常備藥品",
-            "手機充電線 & 行動電源",
-            "演唱會週邊應援袋 / 隨身背包",
-            "防風保暖外套 & 舒適走路鞋",
-            "日本插頭轉接頭 (若需要)",
-            "雨傘 / 折疊傘 (備用)"
-        ];
+      const dayDates = { 1: '20261113', 2: '20261114', 3: '20261115', 4: '20261116' };
 
-        // 倒數計時器
-        function startCountdown() {
-            const targetDate = new Date("2026-11-13T12:00:00+09:00").getTime();
-            
-            function update() {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    document.getElementById("countdown").innerText = "🎉 已經順利出發囉！";
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                document.getElementById("countdown").innerText = `${days}天 ${hours}小時 ${minutes}分`;
-            }
-            update();
-            setInterval(update, 60000);
-        }
-
-        // 切換天數
-        function switchDay(dayNum) {
-            // 更新按鈕樣式
-            for (let i = 1; i <= 4; i++) {
-                const btn = document.getElementById(`dayBtn-${i}`);
-                if (i === dayNum) {
-                    btn.className = "sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-yamabuki shadow-pop translate-x-[2px] translate-y-[2px]";
-                } else {
-                    btn.className = "sketch-btn py-2.5 text-center font-bold text-xs sm:text-sm bg-white shadow-pop opacity-80 hover:opacity-100";
-                }
-            }
-
-            // 渲染內容
-            const container = document.getElementById("itineraryContent");
-            const data = itineraryData[dayNum];
-
-            let html = `
-                <div class="anim-pop space-y-4">
-                    <div class="border-b-3 border-ink pb-3">
-                        <h3 class="text-lg font-bold text-ink">${data.title}</h3>
-                        <p class="text-xs text-slate-600">${data.subtitle}</p>
-                    </div>
-                    <div class="space-y-3">
-            `;
-
-            data.events.forEach(item => {
-                html += `
-                    <div class="sketch-box p-3.5 bg-[#FFFCF6] shadow-pop-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                        <div class="space-y-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-slate-500 font-mono">${item.time}</span>
-                                <span class="${item.tagBg} text-ink text-[11px] px-2 py-0.5 rounded-full border-2 border-ink font-bold">
-                                    ${item.tag}
-                                </span>
-                                ${item.isMust ? '<span class="bg-coral text-white text-[10px] px-1.5 py-0.5 rounded font-bold border border-ink">⭐ 必去</span>' : ''}
-                            </div>
-                            <h4 class="font-bold text-sm text-ink">${item.title}</h4>
-                            <p class="text-xs text-slate-600">${item.desc}</p>
-                        </div>
-                        ${item.cost ? `<div class="text-xs font-bold bg-yamabukiLight text-ink px-2.5 py-1 rounded-lg border-2 border-ink flex-shrink-0 self-end sm:self-center">${item.cost}</div>` : ''}
-                    </div>
-                `;
-            });
-
-            html += `</div></div>`;
-            container.innerHTML = html;
-        }
-
-        // 渲染清單
-        function renderChecklists() {
-            const prepContainer = document.getElementById("prepChecklist");
-            const luggageContainer = document.getElementById("luggageChecklist");
-
-            prepContainer.innerHTML = prepList.map((item, idx) => `
-                <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer">
-                    <input type="checkbox" id="prep-${idx}" onchange="saveCheckState('prep-${idx}')">
-                    <span class="checkmark"></span>
-                    <span class="checklist-label text-ink font-medium">${item}</span>
-                </label>
-            `).join("");
-
-            luggageContainer.innerHTML = luggageList.map((item, idx) => `
-                <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer">
-                    <input type="checkbox" id="luggage-${idx}" onchange="saveCheckState('luggage-${idx}')">
-                    <span class="checkmark"></span>
-                    <span class="checklist-label text-ink font-medium">${item}</span>
-                </label>
-            `).join("");
-
-            // 讀取 LocalStorage 狀態
-            [...prepList.map((_, i) => `prep-${i}`), ...luggageList.map((_, i) => `luggage-${i}`)].forEach(id => {
-                const checked = localStorage.getItem(id) === "true";
-                const checkbox = document.getElementById(id);
-                if (checkbox) checkbox.checked = checked;
-            });
-        }
-
-        function saveCheckState(id) {
-            const checkbox = document.getElementById(id);
-            if (checkbox) {
-                localStorage.setItem(id, checkbox.checked);
-            }
-        }
-
-        // 初始化
-        window.addEventListener("DOMContentLoaded", () => {
-            startCountdown();
-            switchDay(1);
-            renderChecklists();
+      Object.keys(tripData).forEach(day => {
+        const date = dayDates[day];
+        tripData[day].forEach(item => {
+          icsContent += 
+`BEGIN:VEVENT
+SUMMARY:${item.title}
+DESCRIPTION:${item.desc} \\n交通：${item.trans}
+DTSTART;VALUE=DATE:${date}
+DTEND;VALUE=DATE:${date}
+END:VEVENT
+`;
         });
-    </script>
+      });
+
+      icsContent += `END:VCALENDAR`;
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'tokyo_yokohama_2026.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // 頁面初始化
+    window.onload = () => {
+      switchDay(1);
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    };
+  </script>
 </body>
 </html>
